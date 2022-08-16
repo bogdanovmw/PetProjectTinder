@@ -2,9 +2,12 @@ package ru.bogdanov.tindortest.service.impl;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.stubbing.OngoingStubbing;
+import org.springframework.boot.test.context.SpringBootTest;
 import ru.bogdanov.tindortest.model.Liked;
 import ru.bogdanov.tindortest.repository.LikedRepository;
 
@@ -12,9 +15,11 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+//@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 class LikedServiceImplTest {
     @Mock
@@ -24,7 +29,7 @@ class LikedServiceImplTest {
     private LikedServiceImpl likedService;
 
     private Liked liked = Liked.builder()
-                .id(1)
+                .id(1L)
                 .userId(1)
                 .userLikedId(2)
                 .status(true)
@@ -48,7 +53,6 @@ class LikedServiceImplTest {
         assertThat(expected.getId()).isSameAs(liked.getId());
 
         verify(likedRepository).save(liked);
-
     }
 
     @Test
