@@ -6,6 +6,8 @@ import ru.bogdanov.tindortest.model.Liked;
 import ru.bogdanov.tindortest.repository.LikedRepository;
 import ru.bogdanov.tindortest.service.LikedService;
 
+import java.util.List;
+
 @Service
 public class LikedServiceImpl implements LikedService {
     private final LikedRepository likedRepository;
@@ -28,5 +30,10 @@ public class LikedServiceImpl implements LikedService {
     public void delete(long id) {
         likedRepository.findById(id).orElseThrow(() -> new LikedNotFoundException(id));
         likedRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Liked> findAllByUserId(Long id) {
+        return likedRepository.findAllByUserId(id);
     }
 }

@@ -19,10 +19,10 @@ public class Liked {
     private long id;
 
     @Column(name = "id_user")
-    private int userId;
+    private long userId;
 
     @Column(name = "id_liked_user")
-    private int userLikedId;
+    private long userLikedId;
 
     @Column
     private Boolean status;

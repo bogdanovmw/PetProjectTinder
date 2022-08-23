@@ -32,8 +32,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User savePhoto(Long id, String filename) {
+        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+
+        user.setPhoto(filename);
+
+        userRepository.save(user);
+
+        return user;
+    }
+
+    @Override
     public void delete(long id) {
         userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<User> findAllByIdNot(Long id) {
+        return userRepository.findAllByIdNot(id);
     }
 }

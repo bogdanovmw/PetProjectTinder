@@ -1,6 +1,5 @@
-package ru.bogdanov.tindortest.controller;
+package ru.bogdanov.tindortest.controller.userController;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

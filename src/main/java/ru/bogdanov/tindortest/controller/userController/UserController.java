@@ -1,10 +1,11 @@
-package ru.bogdanov.tindortest.controller;
+package ru.bogdanov.tindortest.controller.userController;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.bogdanov.tindortest.model.User;
+import ru.bogdanov.tindortest.service.FileStorageService;
 import ru.bogdanov.tindortest.service.UserService;
 
 import java.net.URI;
@@ -14,9 +15,11 @@ import java.util.List;
 @RequestMapping("/api/user")
 public class UserController {
     private final UserService userService;
+    private final FileStorageService fileStorageService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, FileStorageService fileStorageService) {
         this.userService = userService;
+        this.fileStorageService = fileStorageService;
     }
 
     @GetMapping
@@ -47,6 +50,9 @@ public class UserController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
+        User user = userService.findById(id);
+
+        fileStorageService.delete(user.getPhoto(), id);
         userService.delete(id);
     }
 
