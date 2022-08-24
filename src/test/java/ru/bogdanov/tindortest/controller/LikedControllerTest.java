@@ -10,9 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import ru.bogdanov.tindortest.controller.likedController.LikedController;
-import ru.bogdanov.tindortest.model.Liked;
-import ru.bogdanov.tindortest.service.impl.LikedServiceImpl;
+import ru.bogdanov.tindortest.likedservice.controller.LikedController;
+import ru.bogdanov.tindortest.likedservice.model.Liked;
+import ru.bogdanov.tindortest.likedservice.service.impl.LikedServiceImpl;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.BDDMockito.given;

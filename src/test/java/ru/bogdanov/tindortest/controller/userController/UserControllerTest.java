@@ -10,8 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import ru.bogdanov.tindortest.model.User;
-import ru.bogdanov.tindortest.service.impl.UserServiceImpl;
+import ru.bogdanov.tindortest.userservice.controller.UserController;
+import ru.bogdanov.tindortest.userservice.model.User;
+import ru.bogdanov.tindortest.userservice.service.impl.UserServiceImpl;
 
 import java.util.Arrays;
 import java.util.List;

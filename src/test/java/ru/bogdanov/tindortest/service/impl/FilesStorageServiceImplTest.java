@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
+import ru.bogdanov.tindortest.userservice.service.impl.FilesStorageServiceImpl;
 
 import java.net.MalformedURLException;
 

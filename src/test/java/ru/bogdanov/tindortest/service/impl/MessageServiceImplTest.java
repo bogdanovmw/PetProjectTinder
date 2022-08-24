@@ -5,8 +5,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.bogdanov.tindortest.model.Message;
-import ru.bogdanov.tindortest.repository.MessageRepository;
+import ru.bogdanov.tindortest.chatservice.model.Message;
+import ru.bogdanov.tindortest.chatservice.repository.MessageRepository;
+import ru.bogdanov.tindortest.chatservice.service.impl.MessageServiceImpl;
 
 import java.util.Optional;
 
@@ -25,10 +26,10 @@ class MessageServiceImplTest {
 
     private Message message = Message.builder()
                 .id(1)
-                .sender(1)
-                .recipient(2)
+                .senderId("1")
+                .recipientId("2")
                 .addedAt("16.08.2022 18:00")
-                .message("Hi, Anna!")
+                .content("Hi, Anna!")
             .build();
 
 

@@ -1,7 +1,6 @@
 package ru.bogdanov.tindortest.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import ru.bogdanov.tindortest.model.Message;
-import ru.bogdanov.tindortest.service.impl.MessageServiceImpl;
+import ru.bogdanov.tindortest.chatservice.controller.MessageController;
+import ru.bogdanov.tindortest.chatservice.model.Message;
+import ru.bogdanov.tindortest.chatservice.service.impl.MessageServiceImpl;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.BDDMockito.given;
@@ -35,10 +35,10 @@ class MessageControllerTest {
 
     private Message message = Message.builder()
                 .id(1L)
-                .sender(1)
-                .recipient(2)
+                .senderId("1")
+                .recipientId("2")
                 .addedAt("16.08.2022 18:00")
-                .message("Hi, Anna!")
+                .content("Hi, Anna!")
             .build();
 
     @Test
@@ -51,8 +51,8 @@ class MessageControllerTest {
 
         mockMvc.perform(content)
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.sender", is(message.getSender())))
-                .andExpect(jsonPath("$.recipient", is(message.getRecipient()))).andReturn();
+                .andExpect(jsonPath("$.sender", is(message.getSenderId())))
+                .andExpect(jsonPath("$.recipient", is(message.getRecipientId()))).andReturn();
 
     }
 
@@ -76,7 +76,7 @@ class MessageControllerTest {
 
         mockMvc.perform(content)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("sender", is(message.getSender())))
-                .andExpect(jsonPath("recipient", is(message.getRecipient())));
+                .andExpect(jsonPath("sender", is(message.getSenderId())))
+                .andExpect(jsonPath("recipient", is(message.getRecipientId())));
     }
 }
